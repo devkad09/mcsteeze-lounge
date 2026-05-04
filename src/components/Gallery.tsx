@@ -83,27 +83,27 @@ const Gallery = () => {
       <div className="container relative mx-auto px-6">
         <div className="mx-auto mb-12 max-w-3xl text-center md:mb-16">
           <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="section-kicker mx-auto mb-6"
           >
             The vibe
           </motion.p>
           <motion.h2
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2 }}
             className="font-display text-5xl font-bold text-white sm:text-6xl md:text-7xl"
           >
             A glimpse of <span className="font-serif italic text-gradient-gold">pure gold</span>.
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 8 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: 0.08 }}
+            transition={{ duration: 0.2, delay: 0.08 }}
             className="font-elegant mt-6 text-lg italic leading-relaxed text-white/50 sm:text-xl"
           >
             This is the room where laughter gets louder, playlists get bolder, and the night refuses to end on time.
@@ -132,10 +132,10 @@ const Gallery = () => {
             return (
               <motion.div
                 key={pillar.title}
-                initial={{ opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.2 }}
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-gradient-to-br from-white/[0.06] to-transparent p-6 backdrop-blur-sm transition-all duration-500 hover:border-gold/25"
               >
                 <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl border border-gold/20 bg-gold/[0.08] text-gold transition-transform duration-500 group-hover:scale-105">
@@ -152,10 +152,10 @@ const Gallery = () => {
           {items.map((item, i) => (
             <motion.div
               key={item.alt}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.45, delay: (i % 3) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.2 }}
               className={`group relative overflow-hidden rounded-3xl border border-white/[0.08] shadow-lg shadow-black/40
                 ${item.size === "tall" ? "md:row-span-2" : ""}
                 ${item.size === "wide" ? "md:col-span-2" : ""}
@@ -205,10 +205,10 @@ const Gallery = () => {
         </p>
 
         <motion.figure
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.2 }}
           className="relative mx-auto mt-12 max-w-3xl overflow-hidden rounded-3xl border border-gold/20 bg-gradient-to-br from-gold/[0.07] via-transparent to-velvet/20 p-8 sm:mt-16 sm:p-10 md:mt-20"
         >
           <Quote className="absolute left-6 top-6 h-10 w-10 text-gold/20 sm:h-12 sm:w-12" aria-hidden />

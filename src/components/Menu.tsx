@@ -76,10 +76,10 @@ const Menu = () => {
       <div className="container relative mx-auto px-6">
         <div className="mb-16 flex flex-col items-start justify-between gap-10 md:mb-20 md:flex-row md:items-end">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2 }}
             className="max-w-2xl"
           >
             <p className="section-kicker mb-6 !tracking-[0.5em]">The gastronomy</p>
@@ -141,10 +141,10 @@ const Menu = () => {
           {dishes.map((dish) => (
             <motion.div
               key={dish.name}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+              transition={{ duration: 0.2 }}
               className={`group relative h-[350px] overflow-hidden rounded-3xl border border-white/[0.07] bg-[#050308] shadow-2xl md:h-full
                 ${dish.size === 'lg' ? 'md:col-span-2 md:row-span-2' : ''}
                 ${dish.size === 'md' ? 'md:col-span-2 md:row-span-1' : ''}

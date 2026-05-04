@@ -31,10 +31,10 @@ const About = () => {
       <div className="container relative mx-auto px-6">
         <div className="grid items-center gap-20 lg:grid-cols-2 lg:gap-24">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2 }}
           >
             <div className="section-kicker mb-8">
               <Zap className="h-3.5 w-3.5 text-gold" aria-hidden />
@@ -72,10 +72,10 @@ const About = () => {
             {features.map((feature) => (
               <motion.div
                 key={feature.title}
-                initial={{ opacity: 0, x: 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 0.2 }}
                 className="card-premium group flex cursor-default gap-6"
               >
                 <div

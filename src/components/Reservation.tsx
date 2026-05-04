@@ -91,10 +91,10 @@ const Reservation = () => {
       <div className="container relative mx-auto px-6">
         <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2 }}
           >
             <p className="section-kicker mb-6 w-fit">Reservations</p>
             <h2 className="font-display text-5xl font-bold leading-[1.08] text-white sm:text-6xl md:text-7xl">
@@ -122,10 +122,10 @@ const Reservation = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.06, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.2, delay: 0.06 }}
             className="card-premium relative overflow-hidden p-8 md:p-12"
           >
             <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/15 blur-[90px]" />

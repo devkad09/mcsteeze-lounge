@@ -33,9 +33,9 @@ const Navbar = () => {
   return (
     <>
       <motion.header
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.2 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
           scrolled ? "py-3" : "py-6"
         }`}
@@ -66,7 +66,7 @@ const Navbar = () => {
 
             <ul className="relative z-10 hidden items-center gap-8 md:flex">
               {links.map((l) => (
-                <motion.li key={l.href} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
+                <motion.li key={l.href} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
                   <a
                     href={l.href}
                     className="group relative text-sm font-semibold uppercase tracking-[0.18em] text-foreground/65 transition-premium hover:text-champagne"
@@ -76,7 +76,7 @@ const Navbar = () => {
                   </a>
                 </motion.li>
               ))}
-              <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.35 }}>
+              <motion.li initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2 }}>
                 <a href="#reserve" className="button-premium inline-block text-sm tracking-[0.2em] py-2.5 px-7">
                   Book now
                 </a>
@@ -102,23 +102,23 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
+            transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 bg-[radial-gradient(ellipse_at_top,_hsl(260_30%_8%_/_0.97),_hsl(260_25%_3%_/_0.99))] backdrop-blur-2xl md:hidden"
           >
             <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               exit={{ opacity: 0, y: 16 }}
-              transition={{ type: "spring", damping: 28, stiffness: 260 }}
+              transition={{ duration: 0.2 }}
               className="flex h-full flex-col items-center justify-center px-8"
             >
               <ul className="flex flex-col items-center gap-10">
                 {links.map((l, i) => (
                   <motion.li
                     key={l.href}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.05 + i * 0.06 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <a
                       href={l.href}
@@ -134,7 +134,7 @@ const Navbar = () => {
               <motion.p
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.45 }}
+                transition={{ duration: 0.2 }}
                 className="mt-8 font-elegant text-[0.65rem] uppercase tracking-[0.85em] text-gold/50"
               >
                 Kasoa nightlife

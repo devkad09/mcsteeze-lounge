@@ -6,8 +6,8 @@ const Hero = () => {
   return (
     <section id="hero" className="relative flex min-h-screen w-full items-center justify-center overflow-hidden bg-[#030208]">
       <motion.div
-        initial={{ scale: 1 }}
-        animate={{ scale: 1.06 }}
+        
+        
         transition={{ duration: 28, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
         className="absolute inset-0"
       >
@@ -30,27 +30,27 @@ const Hero = () => {
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center px-6 pb-24 pt-28 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2 }}
           className="mb-10"
         >
           <BrandLogo variant="hero" markOnly className="justify-center" />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, delay: 0.08 }}
           className="section-kicker mb-8"
         >
           <span>The ultimate lounge experience</span>
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.75, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, delay: 0.12 }}
           className="font-display text-4xl font-extrabold leading-[1.05] tracking-[0.04em] text-white sm:text-6xl md:text-7xl lg:text-8xl"
         >
           <span className="block">Crafted for</span>
@@ -62,16 +62,16 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.28 }}
+          transition={{ duration: 0.2, delay: 0.28 }}
           className="font-elegant mx-auto mt-8 max-w-2xl text-lg italic leading-relaxed text-white/55 sm:text-xl md:text-2xl"
         >
           Indulge where velvet nights, rare spirits, and golden hospitality meet — the crown of Kasoa.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.55, delay: 0.38 }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.2, delay: 0.38 }}
           className="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:gap-8"
         >
           <a href="#reserve" className="button-premium px-12 py-5 text-base tracking-[0.22em]">
@@ -90,7 +90,7 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.5 }}
+        transition={{ duration: 0.2 }}
         className="absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3"
       >
         <span className="text-[0.65rem] font-bold uppercase tracking-[0.5em] text-white/35">Scroll</span>
