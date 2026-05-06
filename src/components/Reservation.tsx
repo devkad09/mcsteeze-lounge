@@ -39,7 +39,8 @@ const Reservation = () => {
     reference: (new Date()).getTime().toString(),
     email: form.email,
     amount: 10000, // 100 GHS in pesewas
-    publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_test_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+    currency: "GHS",
+    publicKey: import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || 'pk_test_e1010cf7ab51d1155c4918df44b459b174c51710',
   };
 
   const initializePayment = usePaystackPayment(config);
@@ -71,8 +72,8 @@ const Reservation = () => {
           `*Deposit Paid:* GHS 100`;
 
         const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-        window.open(url, "_blank", "noopener,noreferrer");
         toast.success("Payment successful! Opening WhatsApp to confirm your reservation…");
+        window.location.href = url;
       },
       onClose: () => {
         toast.error("Payment was cancelled. You need to pay the deposit to secure your table.");
@@ -85,83 +86,98 @@ const Reservation = () => {
     .slice(0, 16);
 
   return (
-    <section id="reserve" className="relative overflow-hidden border-t border-white/[0.04] bg-gradient-to-b from-[#040208] to-[#06040f] py-28 sm:py-36">
-      <div className="absolute left-0 top-0 h-px w-full bg-gradient-to-r from-transparent via-gold/30 to-transparent" />
-
+    <section id="reserve" className="relative overflow-hidden border-t border-white/[0.04] bg-[#020104] py-28 sm:py-36">
+      {/* Ambient Glowing Orbs */}
+      <div className="pointer-events-none absolute left-[-10%] top-[-10%] h-[500px] w-[500px] rounded-full bg-gold/10 blur-[120px]" />
+      <div className="pointer-events-none absolute right-[-5%] bottom-[-5%] h-[400px] w-[400px] rounded-full bg-cyan-500/10 blur-[100px]" />
+      
       <div className="container relative mx-auto px-6">
-        <div className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20">
+        <div className="grid items-stretch gap-8 lg:grid-cols-2 lg:gap-12">
+          {/* Left Column: Promotional Content */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.2 }}
+            transition={{ duration: 0.6 }}
+            className="group relative flex flex-col justify-center overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl md:p-12"
           >
-            <p className="section-kicker mb-6 w-fit">Reservations</p>
-            <h2 className="font-display text-5xl font-bold leading-[1.08] text-white sm:text-6xl md:text-7xl">
-              Secure your <br />
-              <span className="font-serif italic text-gradient-gold">private table</span>.
-            </h2>
-            <p className="font-elegant mt-8 max-w-md text-xl italic leading-relaxed text-white/50">
-              The pinnacle of nightlife — intimate evenings or royal celebrations, tailored to your taste.
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-br from-gold/5 via-transparent to-cyan-500/5 opacity-50 transition-opacity group-hover:opacity-100" />
+            
+            <div className="relative z-10">
+              <p className="section-kicker mb-6 w-fit text-gold/80">Experience the Extraordinary</p>
+              <h2 className="font-display text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                THE <span className="text-gradient-gold">MCSTEEZE</span> <br />
+                <span className="text-cyan-400">LOUNGE</span>
+              </h2>
+              
+              <p className="font-elegant mt-8 max-w-md text-lg italic leading-relaxed text-white/60">
+                Indulge in unparalleled luxury. Book your exclusive escape at our premier, members-only lounge.
+              </p>
+              <p className="font-elegant mt-4 max-w-md text-base text-white/40">
+                Enjoy curated cocktails, gourmet cuisine, and an atmosphere of refined elegance. Members receive priority access and bespoke services.
+              </p>
 
-            <div className="mt-10 space-y-5">
-              {[
-                { icon: Clock, text: "Fast confirmation via WhatsApp" },
-                { icon: Users, text: "VIP booths for groups up to 10" },
-                { icon: Info, text: "Special arrangements on request" },
-              ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 text-white/72">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gold/25 bg-gold/[0.06] text-gold">
-                    <item.icon className="h-4 w-4" />
+              <div className="mt-12 space-y-6">
+                {[
+                  "Fast confirmation via WhatsApp",
+                  "VIP booths for groups up to 10",
+                  "Special arrangements on request",
+                ].map((text, i) => (
+                  <div key={i} className="flex items-center gap-4 group/item">
+                    <div className="h-1.5 w-1.5 rounded-full bg-gold/50" />
+                    <span className="text-base font-medium tracking-wide text-white/80">{text}</span>
                   </div>
-                  <span className="text-base font-medium tracking-wide">{item.text}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </motion.div>
 
+          {/* Right Column: Reservation Form */}
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.2, delay: 0.06 }}
-            className="card-premium relative overflow-hidden p-8 md:p-12"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-8 backdrop-blur-2xl md:p-12 shadow-2xl"
           >
-            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-gold/15 blur-[90px]" />
-            <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-gold/[0.04] to-transparent" />
-            
-            <form onSubmit={handleSubmit} className="relative space-y-6">
-              <div className="grid gap-6 md:grid-cols-2">
+            <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/10 blur-[80px]" />
+            <div className="absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-gold/10 blur-[80px]" />
+
+            <h3 className="relative z-10 font-display text-2xl font-bold uppercase tracking-widest text-white/90 mb-8">
+              Reserve Your Table
+            </h3>
+
+            <form onSubmit={handleSubmit} className="relative z-10 space-y-6">
+              <div className="grid gap-6 sm:grid-cols-2">
                 <Field label="Full Name">
                   <input
                     name="name"
                     value={form.name}
                     onChange={handleChange}
-                    placeholder="Enter name"
-                    className="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors placeholder:text-white/25 focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
+                    placeholder="Alex Thorne"
+                    className="input-glass"
                     required
                   />
                 </Field>
-                <Field label="Email">
+                <Field label="Email Address">
                   <input
                     name="email"
                     type="email"
                     value={form.email}
                     onChange={handleChange}
-                    placeholder="Enter email"
-                    className="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors placeholder:text-white/25 focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
+                    placeholder="alex.t@email.com"
+                    className="input-glass"
                     required
                   />
                 </Field>
-                <Field label="Phone">
+                <Field label="Phone Number">
                   <input
                     name="phone"
                     type="tel"
                     value={form.phone}
                     onChange={handleChange}
-                    placeholder="Enter phone"
-                    className="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors placeholder:text-white/25 focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
+                    placeholder="+1 (555) 123-4567"
+                    className="input-glass"
                     required
                   />
                 </Field>
@@ -172,20 +188,20 @@ const Reservation = () => {
                     value={form.date}
                     onChange={handleChange}
                     min={minDate}
-                    className="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors placeholder:text-white/25 focus:border-gold/50 focus:ring-1 focus:ring-gold/30 [color-scheme:dark]"
+                    className="input-glass [color-scheme:dark]"
                     required
                   />
                 </Field>
-                <Field label="Guests">
+                <Field label="Party Size">
                   <select
                     name="guests"
                     value={form.guests}
                     onChange={handleChange as any}
-                    className="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
+                    className="input-glass"
                     required
                   >
                     {[1, 2, 4, 6, 8, 10, 15, 20].map(n => (
-                      <option key={n} value={n} className="bg-royal-black text-white">{n} {n === 1 ? 'Guest' : 'Guests'}</option>
+                      <option key={n} value={n} className="bg-zinc-900 text-white">{n} {n === 1 ? 'Guest' : 'Guests'}</option>
                     ))}
                   </select>
                 </Field>
@@ -198,32 +214,58 @@ const Reservation = () => {
                   onChange={handleChange}
                   placeholder="Birthday, Anniversary, or Drink preferences..."
                   rows={3}
-                  className="w-full resize-none rounded-xl border border-white/[0.1] bg-white/[0.04] px-4 py-3 text-white outline-none transition-colors placeholder:text-white/25 focus:border-gold/50 focus:ring-1 focus:ring-gold/30"
+                  className="input-glass resize-none"
                 />
               </Field>
 
               <button
                 type="submit"
-                className="w-full button-premium py-4 flex items-center justify-center gap-3 text-base tracking-[0.2em]"
+                className="group relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-gold to-cyan-500 p-px font-bold transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
-                <MessageCircle className="w-5 h-5" />
-                PAY DEPOSIT & RESERVE
+                <div className="flex items-center justify-center gap-3 rounded-[inherit] bg-[#020104]/90 px-8 py-5 transition-colors group-hover:bg-transparent">
+                  <span className="text-sm tracking-[0.3em] text-white uppercase">Confirm Reservation</span>
+                </div>
               </button>
-              
-              <p className="text-center text-[0.65rem] font-bold uppercase tracking-[0.25em] text-white/35">
-                GHS 100 deposit required
-              </p>
+
+              <div className="flex flex-col items-center gap-2">
+                <p className="text-[0.65rem] font-black uppercase tracking-[0.4em] text-gold/60">
+                  GHS 100 Deposit Required
+                </p>
+                <div className="h-px w-12 bg-white/10" />
+              </div>
             </form>
           </motion.div>
         </div>
       </div>
+
+      <style>{`
+        .input-glass {
+          width: 100%;
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 0.75rem;
+          padding: 0.875rem 1.25rem;
+          color: white;
+          outline: none;
+          transition: all 0.3s ease;
+          backdrop-filter: blur(4px);
+        }
+        .input-glass:focus {
+          border-color: rgba(6, 182, 212, 0.5);
+          box-shadow: 0 0 20px rgba(6, 182, 212, 0.15);
+          background: rgba(255, 255, 255, 0.05);
+        }
+        .input-glass::placeholder {
+          color: rgba(255, 255, 255, 0.2);
+        }
+      `}</style>
     </section>
   );
 };
 
 const Field = ({ label, children }: { label: string; children: React.ReactNode }) => (
   <div className="space-y-2">
-    <label className="ml-1 text-[0.65rem] font-bold uppercase tracking-[0.28em] text-gold/85">{label}</label>
+    <label className="ml-1 text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/40">{label}</label>
     {children}
   </div>
 );
